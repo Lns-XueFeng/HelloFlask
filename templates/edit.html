@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+
+{% block title %} <title>Edit</title> {% endblock %}
+
+{% block navi %}
+    <div><a href="{{ url_for('index') }}">Index</a></div>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    {{ form.csrf_token }}
+    {{ form.body }}
+    {{ form.submit }}
+</form>
+{% endblock %}

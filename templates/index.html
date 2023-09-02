@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %} <title>Notes</title> {% endblock %}
+</head>
+<body>
+    <div>
+        <h1>Home</h1>
+    </div>
+    {% block navi %}
+        <div><a href="{{ url_for('new_notes') }}">NewNotes</a></div>
+        <h2>{{ notes | length}} notes:</h2>
+        {% for note in notes %}
+            <div>
+                <h4>{{ note.body }}</h4>
+                <a href="{{url_for('update', note_id=note.note_id)}}">Edit</a>
+                <form method="post" action="{{url_for('delete', note_id=note.note_id)}}">
+                    {{ form.csrf_token }}
+                    {{ form.submit }}
+                </form>
+            </div>
+        {% endfor %}
+    {% endblock %}
+
+    {% block content %} {% endblock %}
+
+    <div>
+        <h3>2022.12.29 Lns-XueFeng</h3>
+    </div>
+</body>
+</html>

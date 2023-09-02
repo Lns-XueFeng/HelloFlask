@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+
+{% block title %} <title>Submit</title> {% endblock %}
+
+{% block navi %}
+    <div><a href="{{ url_for('index') }}">Index</a></div>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    {{ note_form.csrf_token }}
+    {{ note_form.body }}
+    {{ note_form.submit }}
+</form>
+{% endblock %}
